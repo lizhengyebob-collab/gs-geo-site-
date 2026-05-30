@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+/* ── Brand tokens ────────────────────────────── */
+@theme {
+  --color-gold:          #d4a853;
+  --color-gold-light:    #e8c870;
+  --color-gold-dark:     #b8860b;
+  --color-navy-bg:       #04080f;
+  --color-navy-surface:  #080f1c;
+  --color-navy-card:     #0c1526;
+  --color-blue-mid:      #2563eb;
+  --color-blue-deep:     #1e40af;
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+:root {
+  --background: #04080f;
+  --foreground: #f0ece0;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Grid background ─────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(212, 168, 83, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 168, 83, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* ── Gradient text (blue → gold) ─────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #60a5fa 0%, #d4a853 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-gold {
+  background: linear-gradient(135deg, #e8c870 0%, #d4a853 60%, #b8860b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Glass card ──────────────────────────────── */
+.glass-card {
+  background: rgba(8, 15, 28, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(212, 168, 83, 0.08);
+}
+
+/* ── Gradient border card (gold accent) ──────── */
+.gradient-border {
+  position: relative;
+  background: rgba(8, 15, 28, 0.85);
+  border-radius: 16px;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 17px;
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 0.5),
+    rgba(212, 168, 83, 0.5),
+    rgba(37, 99, 235, 0.3)
+  );
+  z-index: -1;
+}
+
+/* ── Primary CTA button (deep blue) ─────────── */
+.btn-gradient {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 60%, #2563eb 100%);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+.btn-gradient::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-gradient:hover::after { opacity: 1; }
+.btn-gradient > span,
+.btn-gradient > svg {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Gold accent button ──────────────────────── */
+.btn-gold {
+  background: linear-gradient(135deg, #92670a 0%, #c9a227 60%, #d4a853 100%);
+  color: #04080f;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+.btn-gold::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #7a5808 0%, #b8860b 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-gold:hover::after { opacity: 1; }
+.btn-gold > span,
+.btn-gold > svg {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Gold border (outline variant) ──────────── */
+.btn-outline-gold {
+  border: 1px solid rgba(212, 168, 83, 0.4);
+  color: #d4a853;
+  background: transparent;
+  transition: all 0.2s;
+}
+.btn-outline-gold:hover {
+  border-color: #d4a853;
+  background: rgba(212, 168, 83, 0.08);
+}
+
+/* ── Gold divider line ───────────────────────── */
+.gold-line {
+  background: linear-gradient(90deg, transparent, #d4a853, transparent);
+  height: 1px;
+  opacity: 0.3;
+}
+
+/* ── Animations ──────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+.animate-float { animation: float 5s ease-in-out infinite; }
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 0.85; transform: scale(1.04); }
+}
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.animate-spin { animation: spin 1s linear infinite; }
+
+/* ── Scrollbar ───────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track  { background: #04080f; }
+::-webkit-scrollbar-thumb  { background: rgba(212,168,83,0.25); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(212,168,83,0.45); }
+
+/* ── Selection ───────────────────────────────── */
+::selection { background: rgba(212,168,83,0.25); color: #fff; }
+
+/* ── Focus ring ──────────────────────────────── */
+:focus-visible {
+  outline: 2px solid rgba(212, 168, 83, 0.5);
+  outline-offset: 2px;
+}
+
+/* ── Smooth transitions ──────────────────────── */
+a, button {
+  transition-property: color, background-color, border-color, box-shadow, transform, opacity;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+}
