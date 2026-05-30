@@ -356,6 +356,36 @@ export default function ResourcesPage() {
             </div>
           </div>
 
+          {/* Related blog articles */}
+          <div className="mt-16 mb-4">
+            <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-5 px-1">延伸阅读</p>
+            <Link
+              href="/blog/what-is-geo"
+              className="group flex flex-col sm:flex-row items-start sm:items-center gap-4 rounded-2xl px-6 py-5 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+              style={{ background: "rgba(13,21,38,0.5)", border: "1px solid rgba(212,168,83,0.1)" }}
+            >
+              <div
+                className="flex-shrink-0 px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap"
+                style={{ background: "rgba(212,168,83,0.1)", border: "1px solid rgba(212,168,83,0.2)", color: "#d4a853" }}
+              >
+                深度文章
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-white font-semibold text-sm leading-snug group-hover:text-white transition-colors">
+                  什么是 GEO？它和 SEO 的 5 个核心区别
+                </p>
+                <p className="text-slate-600 text-xs mt-0.5">定义、5 大对比、四步落地路径 · 约 8 分钟</p>
+              </div>
+              <div
+                className="flex items-center gap-1.5 text-xs font-medium flex-shrink-0 group-hover:gap-2.5 transition-all"
+                style={{ color: "#d4a853" }}
+              >
+                阅读全文
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+          </div>
+
           {/* Bottom CTA */}
           <div
             className="mt-20 rounded-3xl p-10 sm:p-14 text-center relative overflow-hidden"

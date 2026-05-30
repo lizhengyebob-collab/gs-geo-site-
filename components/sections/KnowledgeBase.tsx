@@ -128,8 +128,37 @@ export default function KnowledgeBase() {
           ))}
         </div>
 
+        {/* Featured blog article */}
+        <FadeIn delay={380} className="mt-8">
+          <Link
+            href="/blog/what-is-geo"
+            className="group flex flex-col sm:flex-row items-start sm:items-center gap-4 rounded-2xl px-6 py-5 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+            style={{ background: "rgba(13,21,38,0.5)", border: "1px solid rgba(212,168,83,0.1)" }}
+          >
+            <div
+              className="flex-shrink-0 px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap"
+              style={{ background: "rgba(212,168,83,0.1)", border: "1px solid rgba(212,168,83,0.2)", color: "#d4a853" }}
+            >
+              深度文章
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-white font-semibold text-sm group-hover:text-white transition-colors leading-snug">
+                什么是 GEO？它和 SEO 的 5 个核心区别
+              </p>
+              <p className="text-slate-600 text-xs mt-0.5">定义、对比表、执行路径 · 约 8 分钟</p>
+            </div>
+            <div
+              className="flex items-center gap-1.5 text-xs font-medium flex-shrink-0 group-hover:gap-2.5 transition-all"
+              style={{ color: "#d4a853" }}
+            >
+              阅读全文
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+        </FadeIn>
+
         {/* Bottom CTA */}
-        <FadeIn delay={400} className="mt-10 text-center">
+        <FadeIn delay={420} className="mt-6 text-center">
           <Link
             href="/resources"
             className="group inline-flex items-center gap-2.5 px-8 py-4 text-base font-bold text-[#04080f] btn-gold rounded-xl hover:-translate-y-0.5 transition-all duration-300"
