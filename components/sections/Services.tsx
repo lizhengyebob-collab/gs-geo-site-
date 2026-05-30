@@ -62,9 +62,18 @@ export default function Services() {
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
             AI 时代的<span className="gradient-text">全栈可见度</span>解决方案
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            从诊断到优化，从监控到运营——我们帮你在 AI 搜索生态中建立持久的品牌优势
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto mb-6">
+            从诊断到优化，从监控到运营——帮你在 ChatGPT、Claude、Perplexity 等 AI 搜索生态中建立持久的品牌优势
           </p>
+          {/* 术语说明条 */}
+          <div className="inline-flex flex-wrap items-center justify-center gap-x-6 gap-y-2 px-6 py-3 rounded-2xl text-xs text-slate-500"
+            style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
+            <span><span className="font-semibold" style={{ color: "#d4a853" }}>GEO</span> — Generative Engine Optimization，生成式引擎优化</span>
+            <span className="hidden sm:inline text-slate-700">·</span>
+            <span><span className="font-semibold" style={{ color: "#d4a853" }}>AEO</span> — Answer Engine Optimization，回答引擎优化</span>
+            <span className="hidden sm:inline text-slate-700">·</span>
+            <span><span className="font-semibold" style={{ color: "#d4a853" }}>LLMO</span> — Large Language Model Optimization，大模型优化</span>
+          </div>
         </FadeIn>
 
         {/* Service cards */}

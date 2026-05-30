@@ -1,0 +1,49 @@
+# GS GEO — AI 搜索可见度优化专家
+
+> 帮助企业提升在 ChatGPT、Claude、Perplexity、豆包、DeepSeek 等 AI 搜索中的品牌曝光率。
+
+## 关于我们
+
+GS GEO 是专注于 AI 搜索可见度优化（GEO / AEO / LLMO）的专业服务机构。
+我们帮助 B2B 企业、品牌和机构在生成式 AI 搜索引擎的回答中被主动引用和推荐。
+
+## 核心服务
+
+### GEO 搜索体检
+对官网进行 47 维度全面诊断，评估品牌在主流 AI 搜索平台中的可见度现状，生成带优先级的优化清单。
+
+### 品牌 AI 可见度分析
+持续监控品牌在 ChatGPT、Claude、Perplexity、豆包、DeepSeek、Gemini 等平台的曝光频次、引用质量和情感倾向，并与竞品进行横向对比。
+
+### AI 引用优化
+基于 Princeton KDD 2024 及 AutoGEO ICLR 2026 的研究方法，通过权威信号强化、结构化数据完善、llms.txt 部署、FAQ 内容资产建设等手段，提升内容被 AI 引用的概率。
+
+### AI 曝光持续运营
+建立品牌 AI 可见度的持续运营体系，包括月度报告、算法变化跟踪、竞品动态分析和策略迭代。
+
+## 方法论
+
+GEO（Generative Engine Optimization，生成式引擎优化）是针对 AI 搜索引擎的新兴优化方法论，与传统 SEO 的核心差异在于：
+- 目标受众从搜索引擎算法变为生成式大语言模型
+- 优化重点从关键词排名变为内容可引用性和权威信号
+- 效果衡量从点击率变为 AI 回答中的品牌提及率和引用质量
+
+相关术语：GEO / AEO（Answer Engine Optimization）/ LLMO（Large Language Model Optimization）/ AI Visibility
+
+## 联系方式
+
+- 网站：https://geo.goushaoai.com
+- 邮件：lizhengyebob@gmail.com
+- 电话：190 4052 5048
+- 微信：19040525048
+
+## 服务定价
+
+- 免费体检：¥0，适合初步了解品牌 AI 可见度现状
+- 标准版：咨询报价，适合中小型企业
+- 增长版：咨询报价，适合需要系统化 AI 可见度提升的企业
+- 企业版：定制报价，适合大型企业或多品牌集团
+
+## 覆盖平台
+
+ChatGPT（含 ChatGPT Search）、Claude、Perplexity、豆包、DeepSeek、Google Gemini
