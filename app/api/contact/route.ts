@@ -64,21 +64,22 @@ function buildHtml(data: Record<string, string>) {
     </p>
 
     ${[
-      ["姓名",     data.name     ?? "—"],
-      ["公司",     data.company  ?? "—"],
-      ["邮箱",     data.email    ?? "—"],
-      ["官网域名", data.website  ?? "—"],
-      ["行业",     data.industry || "未填写"],
+      ["姓名",     data.name      ?? "—"],
+      ["公司",     data.company   ?? "—"],
+      ["联系方式", data.contact   ?? data.email ?? "—"],
+      ["官网域名", data.website   ?? "—"],
+      ["行业",     data.industry  || "未填写"],
+      ["检测平台", data.platforms || "未选择"],
     ].map(([label, value]) => `
     <div style="display:flex;gap:16px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
       <span style="color:#64748b;font-size:13px;width:70px;flex-shrink:0;">${label}</span>
       <span style="color:#e2e8f0;font-size:13px;word-break:break-all;">${value}</span>
     </div>`).join("")}
 
-    ${data.message ? `
+    ${(data.pain || data.message) ? `
     <div style="margin-top:20px;padding:16px;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.15);border-radius:10px;">
-      <p style="color:#94a3b8;font-size:12px;margin:0 0 8px;text-transform:uppercase;letter-spacing:.05em;">需求描述</p>
-      <p style="color:#e2e8f0;font-size:14px;line-height:1.7;margin:0;">${data.message.replace(/\n/g, "<br>")}</p>
+      <p style="color:#94a3b8;font-size:12px;margin:0 0 8px;text-transform:uppercase;letter-spacing:.05em;">当前困扰</p>
+      <p style="color:#e2e8f0;font-size:14px;line-height:1.7;margin:0;">${(data.pain || data.message || "").replace(/\n/g, "<br>")}</p>
     </div>` : ""}
 
     <div style="margin-top:28px;text-align:center;">
@@ -100,7 +101,7 @@ export async function POST(request: Request) {
   try {
     const data: Record<string, string> = await request.json();
 
-    if (!data.name || !data.email || !data.company || !data.website) {
+    if (!data.name || !data.company || !data.website || (!data.contact && !data.email)) {
       return NextResponse.json({ message: "请填写必填项" }, { status: 400 });
     }
 
@@ -120,7 +121,7 @@ export async function POST(request: Request) {
     await transporter.sendMail({
       from:    `"GS GEO 官网" <${FROM_EMAIL}>`,
       to:      TO_EMAIL,
-      replyTo: data.email,
+      replyTo: data.email || data.contact,
       subject: `【GS GEO 询盘】${data.company} · ${data.name}`,
       html:    buildHtml(data),
     });

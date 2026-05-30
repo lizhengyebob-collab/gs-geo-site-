@@ -30,12 +30,25 @@ const contactMethods = [
 
 const industries = [
   "B2B SaaS", "电商零售", "企业服务", "金融科技",
-  "医疗健康", "教育培训", "跨境电商", "其他",
+  "医疗健康", "教育培训", "跨境电商", "制造业", "其他",
 ];
 
+const AI_PLATFORMS = ["ChatGPT", "Claude", "Perplexity", "豆包", "DeepSeek"];
+
+type FormState = {
+  name: string;
+  company: string;
+  website: string;
+  industry: string;
+  platforms: string[];
+  contact: string;
+  pain: string;
+};
+
 export default function Contact() {
-  const [form, setForm] = useState({
-    name: "", company: "", email: "", website: "", industry: "", message: "",
+  const [form, setForm] = useState<FormState>({
+    name: "", company: "", website: "", industry: "",
+    platforms: [], contact: "", pain: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -45,15 +58,33 @@ export default function Contact() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => setForm({ ...form, [e.target.name]: e.target.value });
 
+  const togglePlatform = (p: string) => {
+    setForm((prev) => ({
+      ...prev,
+      platforms: prev.platforms.includes(p)
+        ? prev.platforms.filter((x) => x !== p)
+        : [...prev.platforms, p],
+    }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
     try {
+      const payload = {
+        name: form.name,
+        company: form.company,
+        website: form.website,
+        industry: form.industry,
+        platforms: form.platforms.join(", ") || "未选择",
+        contact: form.contact,
+        pain: form.pain,
+      };
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify(payload),
       });
       if (res.ok) {
         setSubmitted(true);
@@ -91,13 +122,13 @@ export default function Contact() {
             className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full text-xs font-medium uppercase tracking-wider"
             style={{ border: "1px solid rgba(212,168,83,0.2)", background: "rgba(212,168,83,0.08)", color: "#d4a853" }}
           >
-            联系我们
+            申请免费体检
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
-            开始你的<span className="gradient-text"> AI 可见度之旅</span>
+            了解品牌在 AI 搜索中的<span className="gradient-text">真实现状</span>
           </h2>
           <p className="text-slate-400 text-lg max-w-xl mx-auto">
-            填写表单，我们将在 24 小时内回复，并提供免费 GEO 体检报告
+            填写表单，24 小时内联系，48 小时内交付免费 GEO 体检报告
           </p>
         </FadeIn>
 
@@ -107,16 +138,16 @@ export default function Contact() {
             <div className="glass-card rounded-2xl p-8 h-full">
               <h3 className="text-white font-bold text-lg mb-2">免费体检承诺</h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                提交申请后，GS GEO 专家将在 48 小时内完成你的网站诊断，
-                交付包含 20 项关键指标的体检报告，完全免费。
+                提交申请后，GS GEO 专家手动测试你的品牌在 AI 平台的真实表现，
+                并在 48 小时内交付简版诊断报告。
               </p>
 
               <ul className="space-y-3 mb-8">
                 {[
+                  "24 小时内首次响应联系",
                   "48 小时内交付体检报告",
-                  "20 项 AI 可见度关键指标",
-                  "优先级优化建议清单",
-                  "专家 1v1 报告解读",
+                  "3 条优先级最高的优化建议",
+                  "专家 1v1 报告解读（可预约）",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-sm text-slate-400">
                     <CheckCircle2 className="w-4 h-4 flex-shrink-0" style={{ color: "#d4a853" }} />
@@ -167,11 +198,12 @@ export default function Contact() {
                     感谢你的信任。GS GEO 专家将在 24 小时内联系你，并在 48 小时内交付免费体检报告。
                   </p>
                   <p className="text-xs text-slate-600 mt-2">
-                    请关注邮箱 lizhengyebob@gmail.com 的回复
+                    请留意邮件或电话联系
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* Row 1: 姓名 + 公司 */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-xs text-slate-400 mb-1.5 font-medium">
@@ -189,14 +221,8 @@ export default function Contact() {
                     </div>
                   </div>
 
+                  {/* Row 2: 官网 + 行业 */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-xs text-slate-400 mb-1.5 font-medium">
-                        邮箱 <span className="text-red-400">*</span>
-                      </label>
-                      <input required type="email" name="email" value={form.email} onChange={handleChange}
-                        placeholder="you@company.com" className={inputClass} />
-                    </div>
                     <div>
                       <label className="block text-xs text-slate-400 mb-1.5 font-medium">
                         官网域名 <span className="text-red-400">*</span>
@@ -204,26 +230,84 @@ export default function Contact() {
                       <input required name="website" value={form.website} onChange={handleChange}
                         placeholder="www.example.com" className={inputClass} />
                     </div>
+                    <div>
+                      <label className="block text-xs text-slate-400 mb-1.5 font-medium">所在行业</label>
+                      <select name="industry" value={form.industry} onChange={handleChange}
+                        className={`${inputClass} cursor-pointer appearance-none`}
+                        style={{ colorScheme: "dark" }}
+                      >
+                        <option value="" className="bg-[#080f1c] text-slate-400">请选择行业</option>
+                        {industries.map((ind) => (
+                          <option key={ind} value={ind} className="bg-[#080f1c] text-slate-200">{ind}</option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
 
+                  {/* 想检测的平台 */}
                   <div>
-                    <label className="block text-xs text-slate-400 mb-1.5 font-medium">所在行业</label>
-                    <select name="industry" value={form.industry} onChange={handleChange}
-                      className={`${inputClass} cursor-pointer appearance-none`}
-                      style={{ colorScheme: "dark" }}
-                    >
-                      <option value="" className="bg-[#080f1c] text-slate-400">请选择行业</option>
-                      {industries.map((ind) => (
-                        <option key={ind} value={ind} className="bg-[#080f1c] text-slate-200">{ind}</option>
-                      ))}
-                    </select>
+                    <label className="block text-xs text-slate-400 mb-2.5 font-medium">
+                      想检测哪些 AI 平台？<span className="text-slate-600 font-normal">（可多选）</span>
+                    </label>
+                    <div className="flex flex-wrap gap-2">
+                      {AI_PLATFORMS.map((p) => {
+                        const checked = form.platforms.includes(p);
+                        return (
+                          <button
+                            key={p}
+                            type="button"
+                            onClick={() => togglePlatform(p)}
+                            className="px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 select-none"
+                            style={
+                              checked
+                                ? {
+                                    background: "rgba(212,168,83,0.15)",
+                                    border: "1px solid rgba(212,168,83,0.4)",
+                                    color: "#d4a853",
+                                  }
+                                : {
+                                    background: "rgba(255,255,255,0.04)",
+                                    border: "1px solid rgba(255,255,255,0.08)",
+                                    color: "#64748b",
+                                  }
+                            }
+                          >
+                            {checked ? "✓ " : ""}{p}
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
 
+                  {/* 联系方式 */}
                   <div>
-                    <label className="block text-xs text-slate-400 mb-1.5 font-medium">需求描述</label>
-                    <textarea name="message" value={form.message} onChange={handleChange} rows={4}
-                      placeholder="简单描述你的 AI 可见度目标，或者你当前遇到的挑战..."
-                      className={`${inputClass} resize-none`} />
+                    <label className="block text-xs text-slate-400 mb-1.5 font-medium">
+                      联系方式（邮箱或微信）<span className="text-red-400"> *</span>
+                    </label>
+                    <input
+                      required
+                      name="contact"
+                      value={form.contact}
+                      onChange={handleChange}
+                      placeholder="邮箱地址 或 微信号"
+                      className={inputClass}
+                    />
+                  </div>
+
+                  {/* 当前困扰 */}
+                  <div>
+                    <label className="block text-xs text-slate-400 mb-1.5 font-medium">
+                      当前困扰
+                      <span className="text-slate-600 font-normal ml-1">（选填，帮我们提前了解背景）</span>
+                    </label>
+                    <textarea
+                      name="pain"
+                      value={form.pain}
+                      onChange={handleChange}
+                      rows={3}
+                      placeholder="例如：竞品在 ChatGPT 里被推荐，我们几乎不出现；或者 AI 对我们品牌的描述不准确…"
+                      className={`${inputClass} resize-none`}
+                    />
                   </div>
 
                   {error && (
@@ -255,7 +339,7 @@ export default function Contact() {
                   </button>
 
                   <p className="text-xs text-slate-600 text-center">
-                    提交即表示你同意我们的隐私政策。我们承诺不向第三方分享你的信息。
+                    提交即表示你同意我们处理以上信息用于体检服务。我们承诺不向第三方分享你的信息。
                   </p>
                 </form>
               )}

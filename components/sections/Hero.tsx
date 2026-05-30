@@ -13,9 +13,9 @@ const aiPlatforms = [
 ];
 
 const metrics = [
-  { icon: TrendingUp, value: "+320%", label: "平均 AI 曝光提升" },
-  { icon: Shield,     value: "47项",  label: "GEO 优化检测维度" },
-  { icon: Sparkles,   value: "6大",   label: "主流 AI 平台覆盖" },
+  { icon: Sparkles,   value: "6 大",   label: "主流 AI 平台覆盖" },
+  { icon: Shield,     value: "48 小时", label: "体检报告交付" },
+  { icon: TrendingUp, value: "24 小时", label: "首次响应时限" },
 ];
 
 export default function Hero() {
@@ -113,9 +113,9 @@ export default function Hero() {
         </h1>
 
         <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed">
-          当你的客户向 ChatGPT、Claude、Perplexity 提问时，<br className="hidden sm:block" />
-          <strong className="text-[#f0ece0]">GS GEO</strong> 让 AI{" "}
-          <strong className="text-[#d4a853]">主动引用、推荐、并转化</strong>你的品牌。
+          当买家向 <strong className="text-[#f0ece0]">ChatGPT、Claude、Perplexity、豆包、DeepSeek</strong> 询问「哪家公司做 XX」时，
+          <br className="hidden sm:block" />
+          <strong className="text-[#d4a853]">GS GEO</strong> 帮你的品牌出现在 AI 的推荐名单里。
         </p>
 
         {/* ── CTA 层级 ────────────────────────────── */}
@@ -142,7 +142,7 @@ export default function Hero() {
 
         {/* Micro copy under CTAs */}
         <p className="text-xs text-slate-600 mb-14">
-          免费诊断 · 48小时报告 · 无需信用卡 · 工作日 9:00–18:00 响应
+          完全免费 · 24 小时内联系 · 48 小时交付诊断报告 · 无需信用卡
         </p>
 
         {/* Metrics row */}

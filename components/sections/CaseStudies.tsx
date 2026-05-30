@@ -103,15 +103,15 @@ export default function CaseStudies() {
         <FadeIn className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full text-xs font-medium uppercase tracking-wider"
             style={{ border: "1px solid rgba(6,182,212,0.2)", background: "rgba(6,182,212,0.08)", color: "#06b6d4" }}>
-            案例参考
+            应用场景示例
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
-            不同行业，<span className="gradient-text">相似的 AI 可见度挑战</span>
+            哪些场景<span className="gradient-text">最需要 GEO 优化</span>
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            以下为匿名行业案例，展示典型优化方向与成果方向，供参考。
+            以下为四类典型业务场景的 AI 可见度问题和对应优化方向，供参考评估。
             <br className="hidden sm:block" />
-            具体效果因品牌现状、行业竞争度及执行深度而有所不同。
+            非真实客户案例，描述基于行业通用问题归纳整理。
           </p>
         </FadeIn>
 
@@ -217,9 +217,9 @@ export default function CaseStudies() {
         {/* Disclaimer */}
         <FadeIn delay={400} className="mt-10 text-center">
           <p className="text-xs text-slate-600 max-w-xl mx-auto leading-relaxed">
-            以上案例为匿名行业参考，均基于真实优化场景归纳整理。
-            成果方向描述为定性改善，不代表具体量化承诺。
-            实际效果因品牌起点、行业竞争度、执行深度及时间周期而有所差异。
+            以上为行业通用场景示例，非真实客户案例，不代表具体量化承诺。
+            GEO 优化效果因品牌起点、行业竞争度、内容执行深度及时间周期而有所差异。
+            典型可见效期：技术配置 2–4 周，内容权威信号积累 60–90 天。
           </p>
         </FadeIn>
       </div>

@@ -5,7 +5,9 @@ import WhyNow from "@/components/sections/WhyNow";
 import Stats from "@/components/sections/Stats";
 import Services from "@/components/sections/Services";
 import HowItWorks from "@/components/sections/HowItWorks";
+import GeoCheckProcess from "@/components/sections/GeoCheckProcess";
 import CaseStudies from "@/components/sections/CaseStudies";
+import FitFor from "@/components/sections/FitFor";
 import Testimonials from "@/components/sections/Testimonials";
 import KnowledgeBase from "@/components/sections/KnowledgeBase";
 import Pricing from "@/components/sections/Pricing";
@@ -24,7 +26,9 @@ export default function Home() {
         <Stats />
         <Services />
         <HowItWorks />
+        <GeoCheckProcess />
         <CaseStudies />
+        <FitFor />
         <Testimonials />
         <KnowledgeBase />
         <Pricing />
