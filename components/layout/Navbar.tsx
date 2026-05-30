@@ -9,6 +9,7 @@ const navLinks = [
   { label: "核心服务", href: "#services" },
   { label: "工作原理", href: "#how-it-works" },
   { label: "客户案例", href: "#cases" },
+  { label: "GEO 知识库", href: "/resources" },
   { label: "套餐价格", href: "#pricing" },
   { label: "联系我们", href: "#contact" },
 ];

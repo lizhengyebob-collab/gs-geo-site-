@@ -7,6 +7,7 @@ import Services from "@/components/sections/Services";
 import HowItWorks from "@/components/sections/HowItWorks";
 import CaseStudies from "@/components/sections/CaseStudies";
 import Testimonials from "@/components/sections/Testimonials";
+import KnowledgeBase from "@/components/sections/KnowledgeBase";
 import Pricing from "@/components/sections/Pricing";
 import FAQ from "@/components/sections/FAQ";
 import CTABanner from "@/components/sections/CTABanner";
@@ -25,6 +26,7 @@ export default function Home() {
         <HowItWorks />
         <CaseStudies />
         <Testimonials />
+        <KnowledgeBase />
         <Pricing />
         <FAQ />
         <CTABanner />
